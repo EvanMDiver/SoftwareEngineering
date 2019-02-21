@@ -7,6 +7,39 @@
 <head>
 <script type="text/javascript" src="script.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  
+<style>
+ 
+a:link {
+  color: green;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:visited {
+  color: pink;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:hover {
+  color: red;
+  background-color: transparent;
+  text-decoration: underline;
+}
+a:active {
+  color: yellow;
+  background-color: transparent;
+  text-decoration: underline;
+}
+</style>
+</nav>
+
+
+<section>
+
+  <img class="mySlides" src="file:///C:/Web_Applications_CS3354/Dynamic_1/WebContent/logos-taxi-service-sign-abstract-geometrical-vector-8703276.jpg" style="width:100%">
+ 
+</section>
 <title>Login Page</title>
 </head>
 <body>
@@ -23,9 +56,18 @@
 			out.print("failed");
 		else
 			out.print("succeeded");
-	
+		
+
 	%>
 	<br/>
+	<nav>
+ 
+  <a href="home.jsp" class="w3-button w3-bar-item">Home</a>
+  <a href="register.jsp" class="w3-button w3-bar-item">Register</a>
+ 
+  <a href="login.jsp" class="w3-button w3-bar-item">Login</a>
+  <a href="contact.jsp" class="w3-button w3-bar-item">Contact</a>
+  </nav>
 	
 	<form name="loginform" action="LoginController" method="post" onsubmit="return loginValidate()" >
 	<br>
@@ -36,7 +78,7 @@
 	Username: <input type="text" name="username" id="username"><br>
 	Password: <input type="password" name="password" id="password"><br>
 	<input type="submit" name="submit" value="login"><br>
-	<a href="register.jsp">registration</a>
+	
 	
 	</form>
 </body>
