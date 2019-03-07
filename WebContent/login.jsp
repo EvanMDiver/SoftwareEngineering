@@ -37,7 +37,7 @@ a:active {
 
 <section>
 
-  <img class="mySlides" src="file:///C:/Web_Applications_CS3354/Dynamic_1/WebContent/logos-taxi-service-sign-abstract-geometrical-vector-8703276.jpg" style="width:100%">
+  <img class="mySlides" src="http://localhost:8080/SoftwareEngineering/Images/Taxi.jpg" style="width:100%">
  
 </section>
 <title>Login Page</title>
