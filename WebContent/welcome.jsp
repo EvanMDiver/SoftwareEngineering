@@ -10,6 +10,6 @@
 <h1> ${message} !!! </h1>
 
 	<a href="logout.jsp">logout</a>
-
+	<a href="editInfo.jsp">change password</a>
 </body>
 </html>

@@ -18,6 +18,8 @@ public interface CustomerDao {
 	 */
 	public Customer validateCustomer(Login login);
 
+	int passChange(Customer c);
+
 	
 	//public Customer getCustomer(String username, String pass); This method does not needed as we have the Login object
 
