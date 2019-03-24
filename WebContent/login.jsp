@@ -6,40 +6,76 @@
 <html>
 <head>
 <script type="text/javascript" src="script.js"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>
+body, html {
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-  
-<style>
- 
-a:link {
-  color: green;
-  background-color: transparent;
-  text-decoration: none;
+* {
+  box-sizing: border-box;
 }
-a:visited {
-  color: pink;
-  background-color: transparent;
-  text-decoration: none;
+
+.bg-img {
+  /* The image used */
+  background-image: url("file:///C:/Web_Applications_CS3354/SoftwareEngineering/WebContent/Images/ride.jpg");
+
+  min-height: 550px;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
-a:hover {
-  color: red;
-  background-color: transparent;
-  text-decoration: underline;
+
+/* Add styles to the form container */
+.container {
+  position: absolute;
+  right: 0;
+  margin: 20px;
+  max-width: 300px;
+  padding: 16px;
+  background-color: white;
 }
-a:active {
-  color: yellow;
-  background-color: transparent;
-  text-decoration: underline;
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit button */
+.btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.btn:hover {
+  opacity: 1;
 }
 </style>
-</nav>
+</head>
+<body>
 
 
-<section>
 
-  <img class="mySlides" src="http://localhost:8080/SoftwareEngineering/Images/Taxi.jpg" style="width:100%">
- 
-</section>
+
+  </body>
+</div>
 <title>Login Page</title>
 </head>
 <body>
@@ -61,13 +97,33 @@ a:active {
 	%>
 	<br/>
 	<nav>
+	<h2>Taxi Service</h2>
+<div class="bg-img">
+  <form name="loginform" action="LoginController" class="container" method="post" onsubmit="return loginValidate()" >
+    <br>
+    ${message}<br>
+	${successMessage}<br>
+    <h1>Login</h1>
+    
+
+    <label for="username"><b>Username</b></label>
+    <input type="text"  name="username"  id="username" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password"  name="password" id="password" required>
+    
+	<a href="register.jsp" class="">Register</a>
+	 <a href="contact.jsp" class="">Contact</a>
+      <a href="home.jsp" class="">Guest</a>
+    
+    
+		<input type="submit" name="submit" class="btn" value="login"><br>
+	
+   
+  </form>
+
+ </div>
  
-  <a href="home.jsp" class="w3-button w3-bar-item">Home</a>
-  <a href="register.jsp" class="w3-button w3-bar-item">Register</a>
- 
-  <a href="login.jsp" class="w3-button w3-bar-item">Login</a>
-  <a href="contact.jsp" class="w3-button w3-bar-item">Contact</a>
-  </nav>
 	
 	<form name="loginform" action="LoginController" method="post" onsubmit="return loginValidate()" >
 	<br>
@@ -75,9 +131,6 @@ a:active {
 	${successMessage}<br>
 	
 	
-	Username: <input type="text" name="username" id="username"><br>
-	Password: <input type="password" name="password" id="password"><br>
-	<input type="submit" name="submit" value="login"><br>
 	
 	
 	</form>
