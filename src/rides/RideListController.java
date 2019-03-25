@@ -23,7 +23,7 @@ public class RideListController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter output = response.getWriter();
-		output.println("<style>\r\n" + 
+		String out="<style>\r\n" + 
 				"table, th, td {\r\n" + 
 				"  border: 1px solid black;\r\n" + 
 				"}\r\n" + 
@@ -36,23 +36,9 @@ public class RideListController extends HttpServlet {
 		"    <th>Location Y</th>\r\n" + 
 		"    <th>Destination X</th>\r\n" + 
 		"    <th>Destination Y</th>\r\n" + 
-		"  </tr>\r\n" + 
-		"  <tr>\r\n" + 
-		"    <td>Jill</td>\r\n" + 
-		"    <td>Smith</td>\r\n" + 
-		"    <td>50</td>\r\n" + 
-		"  </tr>\r\n" + 
-		"  <tr>\r\n" + 
-		"    <td>Eve</td>\r\n" + 
-		"    <td>Jackson</td>\r\n" + 
-		"    <td>94</td>\r\n" + 
-		"  </tr>\r\n" + 
-		"  <tr>\r\n" + 
-		"    <td>John</td>\r\n" + 
-		"    <td>Doe</td>\r\n" + 
-		"    <td>80</td>\r\n" + 
-		"  </tr>\r\n" + 
-		"</table>\r\n");
+		"  </tr>\r\n" ;
+		
+		output.println(out+ "</table>\r\n");
 	}
 	
 	
