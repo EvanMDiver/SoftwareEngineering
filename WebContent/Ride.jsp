@@ -1,3 +1,4 @@
+<%@page import="rides.RideRequestController"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -9,8 +10,8 @@
 <title>Guest Rides</title>
 </head>
 <body>
-<form action="/action_page.php">
-  <img src="file:///C:/Web_Applications_CS3354/SoftwareEngineering/WebContent/Images/form.jpg" style="width:100%">
+<form name="regform" action="RequestRide" method="post">
+  <img src="Images/form.jpg" style="width:100%">
 
   First name:<br>
   <input type="text" name="firstname" value=" ">
@@ -18,11 +19,18 @@
   Last name:<br>
   <input type="text" name="lastname" value=" ">
   <br><br>
+  <br>
+  	Time
+  <br>
+  	<input type="text" name="Time" value=" ">
+  <br>
   Pick-Up address:<br>
-  <input type="text" name="Pick-Up" value=" ">
+  <input type="text" name="Pick-UpX" value=" ">
+  <input type="text" name="Pick-UpY" value=" ">
   <br>
   Destination address:<br>
-  <input type="text" name="Destination" value=" ">
+  <input type="text" name="DestinationX" value=" ">
+  <input type="text" name="DestinationY" value=" ">
   <br>
   <input type="submit" value="Submit">
 </form> 

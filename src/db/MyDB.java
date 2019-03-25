@@ -23,6 +23,17 @@ CREATE TABLE `customer` (
 )
 
 
+ 
+CREATE TABLE `ride` (
+`userId` char(20) NOT NULL,
+`StartX` int,
+`StartY` int,
+`DestX` int,
+`DestY` int,
+`Driver` char(20)
+)
+
+
 jdbc:mysql://127.0.0.1:3306/coursedatabase?user=coursedatabase_admin
 
 */

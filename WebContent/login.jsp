@@ -18,7 +18,7 @@ body, html {
 
 .bg-img {
   /* The image used */
-  background-image: url("Images/ride.jpg");
+  background-image: url("./Images/ride.jpg");
 
   min-height: 550px;
 
