@@ -12,6 +12,6 @@
 	<a href="logout.jsp" class="w3-button w3-bar-item">logout</a>
 	<a href="editInfo.jsp" class="w3-button w3-bar-item">change password</a>
 	<a href="home.jsp" class="w3-button w3-bar-item">catch a ride!!</a>
-	<a href="myrides.jsp" class="w3-button w3-bar-item">My Rides</a>
+	<a href="RideList" class="w3-button w3-bar-item">My Rides</a>
 </body>
 </html>
