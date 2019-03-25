@@ -3,7 +3,7 @@
   <display-name>Software Engineering Project</display-name>
   <welcome-file-list>
 
-	  <welcome-file>MainServlet</welcome-file>
+	  <welcome-file>login.jsp</welcome-file>
 
   </welcome-file-list>
 </web-app>

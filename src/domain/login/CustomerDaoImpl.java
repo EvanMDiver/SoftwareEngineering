@@ -23,7 +23,6 @@ public class CustomerDaoImpl implements CustomerDao {
 			ps =conn.prepareStatement("Update Customer set password = ? where userId = ?");
 			ps.setString(2, c.getUsername());
 			ps.setString(1, c.getPassword());
-			//ps.setString(3, c.getName());
 			ps.executeUpdate();
 			ps.close();
 			conn.close();

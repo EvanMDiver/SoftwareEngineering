@@ -9,7 +9,8 @@
 <body>
 <h1> ${message} !!! </h1>
 
-	<a href="logout.jsp">logout</a>
-	<a href="editInfo.jsp">change password</a>
+	<a href="logout.jsp" class="w3-button w3-bar-item">logout</a>
+	<a href="editInfo.jsp" class="w3-button w3-bar-item">change password</a>
+	<a href="home.jsp" class="w3-button w3-bar-item">catch a ride</a>
 </body>
 </html>
