@@ -8,9 +8,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import local.LocalUser;
+
 @WebServlet("/RequestRide")
 public class RideRequestController extends HttpServlet {
 	
+	public RideRequestController() {}
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -18,16 +27,28 @@ public class RideRequestController extends HttpServlet {
 		Location l = new Location();
 		Location l2 = new Location();
 		Time t =new Time();
-		l.setY((int)request.getAttribute("DestinationY"));
-		l.setX((int)request.getAttribute("DestinationX"));
+		int x=Integer.parseInt(request.getParameter("DestinationX").trim());
+		int y=Integer.parseInt(request.getParameter("DestinationY").trim());
+		int tm=Integer.parseInt(request.getParameter("Time").trim());
+		l.setY(y);
+		l.setX(x);
 		r.setDest(l);
 		
-		l2.setY((int)request.getAttribute("Pick-UpX"));
-		l2.setX((int)request.getAttribute("Pick-UpY"));
+		x=Integer.parseInt(request.getParameter("Pick-UpX").trim());
+		y=Integer.parseInt(request.getParameter("Pick-UpY").trim());
+		
+		l2.setY(y);
+		l2.setX(x);
 		r.setStart(l2);
 		
-		t.setTime((int)request.getAttribute("Time"));
+		t.setTime(tm);
 		r.setPickup(t);
+		
+		r.addRide();
+		
+		LocalUser c=LocalUser.getInstance();
+		request.setAttribute("message", "Ride Created "+c.getName());
+		request.getRequestDispatcher("welcome.jsp").forward(request, response);
 		
 	}
 }

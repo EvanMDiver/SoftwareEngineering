@@ -1,3 +1,4 @@
+<%@page import="rides.RideRequestController"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -9,7 +10,7 @@
 <title>Guest Rides</title>
 </head>
 <body>
-<form action="/action_page.php">
+<form name="regform" action="RequestRide" method="post">
   <img src="Images/form.jpg" style="width:100%">
 
   First name:<br>
