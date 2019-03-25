@@ -57,7 +57,7 @@
 
 
 <div class="container">
-  <img src="file:///C:/Web_Applications_CS3354/SoftwareEngineering/WebContent/Images/ride.jpg" style="width:350%">
+  <img src="Images/ride.jpg" style="width:350%">
   <a href="Ride.jsp" class="w3-button w3-bar-item">
   <button class="btn">Want Ride?</button></a>
   

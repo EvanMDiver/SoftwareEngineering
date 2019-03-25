@@ -22,7 +22,7 @@ body, html {
 
 .bg-img {
   /* The image used */
-  background-image: url("file:///C:/Web_Applications_CS3354/SoftwareEngineering/WebContent/Images/ride.jpg");
+  background-image: url("Images/ride.jpg");
 
   min-height: 550px;
 
