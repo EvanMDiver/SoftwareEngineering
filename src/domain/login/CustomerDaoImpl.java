@@ -14,6 +14,27 @@ public class CustomerDaoImpl implements CustomerDao {
 	static PreparedStatement ps;
 	DbManager db = new DbManager();
 	
+	
+	@Override
+	public int passChange(Customer c) {
+		try {
+			
+			conn = db.getConnection();
+			ps =conn.prepareStatement("Update Customer set password = ? where userId = ?");
+			ps.setString(2, c.getUsername());
+			ps.setString(1, c.getPassword());
+			ps.executeUpdate();
+			ps.close();
+			conn.close();
+			
+			
+		}catch(Exception e) {
+			System.out.println("Help the thing failed");
+		}
+		
+		return 1;
+	}
+	
 	@Override
 	public int register(Customer c) {
 		int status = 0;
