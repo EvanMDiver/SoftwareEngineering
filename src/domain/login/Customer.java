@@ -1,33 +1,29 @@
 package domain.login;
+
 /**
  * 
  * @author mehra
  *
  */
-public class Customer {
+public class Customer extends User {
 
-	private String username;
-	private String password;
-	private String name;
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
+	public Customer(String username, String password, String name) {
+		super(username, password, name);
 	}
 
-	
+	public boolean Validate(Login login) {
+		System.out.printf("Login: %s, %s\n", login.getUsername(), login.getPassword());
+		System.out.printf("Customer: %s, %s\n", username, password);
+
+		if (!this.username.equals(login.getUsername())) {
+			return false;
+		}
+		if (!this.password.equals(login.getPassword())) {
+			return false;
+		}
+
+		return true;
+
+	}
+
 }
-

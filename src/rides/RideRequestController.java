@@ -8,47 +8,44 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import db.DbManager;
+import domain.login.Customer;
 import local.LocalUser;
 
 @WebServlet("/RequestRide")
 public class RideRequestController extends HttpServlet {
-	
-	public RideRequestController() {}
-	
+
+	public RideRequestController() {
+	}
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Override 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		Ride r= new Ride();
-		Location l = new Location();
-		Location l2 = new Location();
-		Time t =new Time();
-		int x=Integer.parseInt(request.getParameter("DestinationX").trim());
-		int y=Integer.parseInt(request.getParameter("DestinationY").trim());
-		int tm=Integer.parseInt(request.getParameter("Time").trim());
-		l.setY(y);
-		l.setX(x);
-		r.setDest(l);
-		
-		x=Integer.parseInt(request.getParameter("Pick-UpX").trim());
-		y=Integer.parseInt(request.getParameter("Pick-UpY").trim());
-		
-		l2.setY(y);
-		l2.setX(x);
-		r.setStart(l2);
-		
-		t.setTime(tm);
-		r.setPickup(t);
-		
-		r.addRide();
-		
-		LocalUser c=LocalUser.getInstance();
-		request.setAttribute("message", "Ride Created "+c.getName());
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		int x = Integer.parseInt(request.getParameter("DestinationX").trim());
+		int y = Integer.parseInt(request.getParameter("DestinationY").trim());
+
+		Location start = new Location(x, y);
+
+		x = Integer.parseInt(request.getParameter("Pick-UpX").trim());
+		y = Integer.parseInt(request.getParameter("Pick-UpY").trim());
+
+		Location dest = new Location(x, y);
+
+		Ride r = new Ride((Customer) LocalUser.getUser(), start, dest, request.getParameter("Time"));
+
+		if (DbManager.add(r)) {
+			request.setAttribute("message", "Ride Created.");
+		} else {
+			request.setAttribute("message", "Could not create ride.");
+		}
+
 		request.getRequestDispatcher("welcome.jsp").forward(request, response);
-		
+
 	}
 }

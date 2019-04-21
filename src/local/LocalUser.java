@@ -1,11 +1,14 @@
 package local;
 
+import domain.login.User;
+
 public class LocalUser {
 	
 	private String username = null;
 	private String pass = null;
 	private String name = null;
 	private static LocalUser instance=null;
+	private static User user;
 	
 	private LocalUser() {}
 	
@@ -15,6 +18,14 @@ public class LocalUser {
 		return instance;
 	}
 
+	public void setUser(User u) {
+		this.user = u;
+	}
+	
+	public static User getUser() {
+		return user;
+	}
+	
 	public String getUsername() {
 		return username;
 	}

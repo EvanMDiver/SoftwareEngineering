@@ -1,58 +1,51 @@
 package rides;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
-import db.DbManager;
+import domain.login.*;
 import local.LocalUser;
 
 public class Ride {
-	private LocalUser rider = LocalUser.getInstance();
+	
+	public Ride(Integer id, Customer rider,  Location start, Location dest, String time, Driver driver) {
+		this.id = id;
+		this.rider = rider;
+		this.driver = driver;
+		this.dest = dest;
+		this.start = start;
+		this.time = time;
+	}
+	
+	public Ride(Customer rider,  Location start, Location dest, String time) {
+		this.id = null;
+		this.rider = rider;
+		this.driver = null;
+		this.dest = dest;
+		this.start = start;
+		this.time = time;
+	}
+	
+	private Integer id;
+	private Customer rider;
+	private Driver driver;
 	private Location dest;
 	private Location start;
-	private Time pickup;
-	
-	static Connection conn;
-	static PreparedStatement ps;
-	DbManager db = new DbManager();
-	/**
-	 * CREATE TABLE `ride` (
-`userId` char(20) NOT NULL,
-`StartX` int DEFAULT NULL,
-`StartY` int DEFAULT NULL,
-`DestX` int DEFAULT NULL,
-`DestY` int DEFAULT NULL,
-`Driver` char(20) DEFAULT NULL
-);
-	 * */
-	public void addRide() {
-		int status = 0;
-		conn = db.getConnection();
-		try {
-			ps =conn.prepareStatement("insert into ride values(?,?,?,?,?,?)");
-			ps.setString(1, rider.getUsername());
-			ps.setInt(2, start.getX());
-			ps.setInt(3, start.getY());
-			ps.setInt(4, dest.getX());
-			ps.setInt(5, dest.getY());
-			ps.setString(6, "Temp");
-			status = ps.executeUpdate();
-			conn.close();
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		}
-		
-	}
+	private String time;
 	
 	
-	public LocalUser getRider() {
+	public Customer getRider() {
 		return rider;
 	}
-	public void setRider(LocalUser rider) {
+	public void setRider(Customer rider) {
 		this.rider = rider;
 	}
+	
+	public Driver getDriver() {
+		return driver;
+	}
+	public void setDriver(Driver driver) {
+		this.driver = driver;
+	}
+	
 	public Location getDest() {
 		return dest;
 	}
@@ -65,11 +58,11 @@ public class Ride {
 	public void setStart(Location start) {
 		this.start = start;
 	}
-	public Time getPickup() {
-		return pickup;
+	public String getTime() {
+		return time;
 	}
-	public void setPickup(Time pickup) {
-		this.pickup = pickup;
+	public void setTime(String time) {
+		this.time = time;
 	}
 	
 }

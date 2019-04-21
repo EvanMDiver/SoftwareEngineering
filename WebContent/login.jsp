@@ -86,8 +86,7 @@ input[type=text]:focus, input[type=password]:focus {
 	<%! int number1, number2; %>
 	
 	<%
-		DbManager db = new DbManager();
-		Connection conn = (Connection) db.getConnection();
+		Connection conn = (Connection) DbManager.getConnection();
 		if(conn == null)
 			out.print("failed");
 		else
