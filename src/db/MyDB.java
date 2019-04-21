@@ -16,22 +16,27 @@ public interface MyDB {
 	
 }
 /**
-CREATE TABLE `customer` (
-`userId` char(20) NOT NULL,
-`password` char(10) DEFAULT NULL,
-`name` char(20) DEFAULT NULL
-)
-
-
+CREATE TABLE  `customer` (
+  `userId` CHAR(20) NOT NULL,
+  `password` CHAR(10) NOT NULL,
+  `name` CHAR(20) NOT NULL );
+ 
+CREATE TABLE  `driver` (
+  `userId` CHAR(20) NOT NULL,
+  `password` CHAR(10) NOT NULL,
+  `name` CHAR(20) NOT NULL);
  
 CREATE TABLE `ride` (
-`userId` char(20) NOT NULL,
-`StartX` int,
-`StartY` int,
-`DestX` int,
-`DestY` int,
-`Driver` char(20)
-)
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `customerId` CHAR(20) NOT NULL,
+  `startX` INT NOT NULL,
+  `startY` INT NOT NULL,
+  `endX` INT NOT NULL,
+  `endY` INT NOT NULL,
+  `time` VARCHAR(60) NOT NULL,
+  `driverId` CHAR(20) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)ride
+  );
 
 
 jdbc:mysql://127.0.0.1:3306/coursedatabase?user=coursedatabase_admin
