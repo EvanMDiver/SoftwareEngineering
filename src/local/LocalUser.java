@@ -2,7 +2,7 @@ package local;
 
 public class LocalUser {
 	
-	private String username = null;
+	private String username = "NoneFound";
 	private String pass = null;
 	private String name = null;
 	private static LocalUser instance=null;

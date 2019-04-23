@@ -44,3 +44,8 @@ function loginValidate(){
         return false;
     }
 }
+
+function getId(elmt){
+	var id=elmt.id;
+	alert("element number "+id);
+}

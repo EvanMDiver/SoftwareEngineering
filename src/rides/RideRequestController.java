@@ -29,7 +29,7 @@ public class RideRequestController extends HttpServlet {
 		Time t =new Time();
 		int x=Integer.parseInt(request.getParameter("DestinationX").trim());
 		int y=Integer.parseInt(request.getParameter("DestinationY").trim());
-		int tm=Integer.parseInt(request.getParameter("Time").trim());
+		String tm=request.getParameter("Time");
 		l.setY(y);
 		l.setX(x);
 		r.setDest(l);
