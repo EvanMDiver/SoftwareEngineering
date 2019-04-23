@@ -44,3 +44,4 @@ function loginValidate(){
         return false;
     }
 }
+

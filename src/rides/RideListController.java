@@ -61,7 +61,7 @@ public class RideListController extends HttpServlet {
 				}
 			}
 
-			output.println(out + sb.toString() + "</table>\r\n");
+			request.setAttribute("unclaimed-table", out + sb.toString() + "</table>\r\n");
 		} catch (
 
 		SQLException e) {

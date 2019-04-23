@@ -31,6 +31,14 @@ public class Ride {
 	private Location start;
 	private String time;
 	
+	public boolean claimed() {
+		if (driver != null) return true;
+		else return false;
+	}
+	
+	public Integer getId() {
+		return id;
+	}
 	
 	public Customer getRider() {
 		return rider;

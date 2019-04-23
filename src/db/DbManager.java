@@ -112,5 +112,51 @@ public class DbManager implements MyDB {
 		}
 
 	}
+	
+	public static void saveRide(Ride r) {
+		try {
+			Connection conn = getConnection();
+			Statement state = conn.createStatement();
+			
+			state.executeUpdate("update coursedatabase.ride set driverId = \""+ r.getDriver().getUsername() + "\" where id =" + r.getId());
+						
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+	public static Ride getRide(int rideId) {
+		try {
+			Connection conn = getConnection();
+			Statement state = conn.createStatement();
+			ResultSet rs = state.executeQuery("select * from coursedatabase.ride where id = '" + rideId+ "';");
+			
+			if(rs.next()){
+				int id = rs.getInt("id");
+				String customerId = rs.getString("customerId");
+				int startX = rs.getInt("startX");
+				int startY = rs.getInt("startY");
+				int endX = rs.getInt("endX");
+				int endY = rs.getInt("endY");
+				String time = rs.getString("time");
+				String driverId = rs.getString("driverId");
+				Location start = new Location(startX, startY);
+				Location dest = new Location(endX, endY);
+				
+				Customer rider = getCustomer(customerId);
+				Driver driver = getDriver(driverId);
+
+				Ride ride = new Ride(id, rider, start, dest, time, driver);
+				return ride;
+			}
+			else return null;
+		} catch (SQLException e) { 
+			e.printStackTrace();
+			return null;
+		}
+	}
 
 }
