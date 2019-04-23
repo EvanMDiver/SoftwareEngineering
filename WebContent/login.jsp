@@ -85,7 +85,7 @@ input[type=text]:focus, input[type=password]:focus {
 	
 	<%! int number1, number2; %>
 	
-	<%
+	<% 
 		Connection conn = (Connection) DbManager.getConnection();
 		if(conn == null)
 			out.print("failed");
@@ -113,7 +113,7 @@ input[type=text]:focus, input[type=password]:focus {
     
 	<a href="register.jsp" class="">Register</a>
 	 <a href="contact.jsp" class="">Contact</a>
-      <a href="home.jsp" class="">Guest</a>
+      <a href="home.jsp" class="">Driver</a>
     
     
 		<input type="submit" name="submit" class="btn" value="login"><br>
@@ -133,5 +133,5 @@ input[type=text]:focus, input[type=password]:focus {
 	
 	
 	</form>
-</body>
+</body> 
 </html>

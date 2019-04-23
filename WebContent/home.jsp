@@ -1,5 +1,9 @@
+<%@page import="db.DbManager"%>
+<%@page import="java.sql.Connection"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html>
 <html>
 
@@ -8,73 +12,67 @@
 
 <head>
 
-<style>
-.container {
-  position: relative;
-  width: 100%;
-  max-width: 400px;
-}
 
-.container img {
-  width: 100%;
-  height: auto;
-}
 
-.container .btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  background-color: #555;
-  color: white;
-  font-size: 16px;
-  padding: 12px 24px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  text-align: center;
-}
+<body>
+	<%out.print("Hello!"); %>
+	<%= new java.util.Date() %>
+	
+	
+	<%! int number1, number2; %>
+	
+	<% 
+		Connection conn = (Connection) DbManager.getConnection();
+		if(conn == null)
+			out.print("failed");
+		else
+			out.print("succeeded");
+		
 
-.container .btn:hover {
-  background-color: black;
-}
-.container {
-  position: relative;
-  width: 100%;
-  max-width: 400px;
-}
-.right{
-  position: right;
-  bottom: 8px;
-  right: 16px;
-}
+	%>
+	<br/>
+	<nav>
+	<h2>Taxi Service</h2>
 
+  <div class="bg-img">
+  <form name="loginform" action="LoginControllerD" class="container" method="post" onsubmit="return loginValidate()" >
+    <br>
+    ${message}<br>
+	${successMessage}<br>
+    <h1>Driver Page</h1>
+    
+
+    <label for="username"><b>Username</b></label>
+    <input type="text"  name="username"  id="username" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password"  name="password" id="password" required>
+    
+<a href="registerD.jsp" class="">Register</a>
+    
+    
+		<input type="submit" name="submit" class="btn" value="login"><br>
+	
+   
+  </form>
+
+ </div>
+    <br>
+    ${message}<br>
+	${successMessage}<br>
+  
 
 </style>
 </head>
 <body>
 
 
-<div class="container">
-  <img src="Images/ride.jpg" style="width:350%">
-  <a href="Ride.jsp" class="w3-button w3-bar-item">
-  <button class="btn">Want Ride?</button></a>
-  
-  	
-</div>
-
 
 
 
 
 <!-- Navigation -->
-<nav class="w3-bar w3-black">
-  <a href="Ride.jsp" class="w3-button w3-bar-item">Ride</a>
 
-
- 
-</nav>
 
 </body>
 </html>
