@@ -64,7 +64,7 @@ public class RideListController extends HttpServlet {
 				sb.append("<th>" + r.getDest().getY() + "</th>");
 				sb.append("<th>" + r.getTime() + "</th>");
 				if (r.getDriver() == null) {
-					sb.append("<th> Unclaimed </th></tr>");
+					sb.append("<th> Unclaimed </th>");
 				} else {
 
 					sb.append("<th>" + r.getDriver().getName() + "</th>");

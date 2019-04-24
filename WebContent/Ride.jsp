@@ -13,12 +13,7 @@
 <form name="regform" action="RequestRide" method="post">
   <img src="Images/form.jpg" style="width:100%">
 
-  First name:<br>
-  <input type="text" name="firstname" value=" ">
   <br>
-  Last name:<br>
-  <input type="text" name="lastname" value=" ">
-  <br><br>
   <br>
   	Time
   <br>
@@ -32,7 +27,7 @@
   <input type="text" name="DestinationX" value=" ">
   <input type="text" name="DestinationY" value=" ">
   <br>
-  <input type="submit" value="Submit">
+  <input type="submit" value="Submit" name="submit">
 </form> 
 
 

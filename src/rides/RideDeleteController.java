@@ -3,6 +3,7 @@ package rides;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,7 +29,8 @@ public class RideDeleteController extends HttpServlet {
 		PrintWriter output = response.getWriter();		
 		
 		DbManager.delete(DbManager.getRide(Integer.parseInt(request.getQueryString())));
-		output.println("<h4>file deleted</h4> <a href=\"welcome.jsp\">return to home screen</a>");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/welcome.jsp");
+		dispatcher.forward(request, response);
 		
 	}
 	
