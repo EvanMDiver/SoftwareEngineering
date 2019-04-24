@@ -5,11 +5,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Welcome Page</title>
+<title>My Rides</title>
 </head>
 <body>
+<h1>My Rides</h1>
 	<div name="loginform" action="RideList" class="container" method="post"></div>
-	
+	<% RideListController rc = new RideListController();
+	out.print(rc.getTable());%>
 	
 </body>
 </html>

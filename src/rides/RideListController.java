@@ -32,42 +32,8 @@ public class RideListController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		PrintWriter output = response.getWriter();
-		try {
-			ArrayList<Ride> rides = DbManager.getRides();
-
-			response.setContentType("text/html");
-
-			String out = "<style>\r\n" + "table, th, td {\r\n" + "  border: 1px solid black;\r\n" + "}\r\n"
-					+ "</style> " + "<table style=\"width:100%\">\r\n" + "  <tr>\r\n" + "<th>Location X</th>\r\n"
-					+ "    <th>Location Y</th>\r\n" + "    <th>Destination X</th>\r\n"
-					+ "    <th>Destination Y</th>\r\n" + "    <th>Time</th>\r\n" + "    <th>Driver</th> \r\n" + "  </tr>\r\n";
-			StringBuilder sb = new StringBuilder();
-
-			for (Ride r : rides) {
-				if (r.getRider().equals(LocalUser.getUser())) {
-					sb.append("<tr>");
-					sb.append("<th>" + r.getStart().getX() + "</th>");
-					sb.append("<th>" + r.getStart().getY() + "</th>");
-					sb.append("<th>" + r.getDest().getX() + "</th>");
-					sb.append("<th>" + r.getDest().getY() + "</th>");
-					sb.append("<th>" + r.getTime() + "</th>");
-					if (r.getDriver() == null) {
-						sb.append("<th> Unclaimed </th></tr>");
-					} else {
-
-						sb.append("<th>" + r.getDriver().getName() + "</th></tr>");
-					}
-				}
-			}
-
-			request.setAttribute("unclaimed-table", out + sb.toString() + "</table>\r\n");
-		} catch (
-
-		SQLException e) {
-			// TODO Auto-generated catch block
-			output.println(e);
-		}
+			
+			getServletContext().getRequestDispatcher("/myrides.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -76,4 +42,42 @@ public class RideListController extends HttpServlet {
 		doGet(request, response);
 	}
 
+	public String getTable() {
+		ArrayList<Ride> rides;
+		try {
+			rides = DbManager.getRides();
+		
+
+
+		String out = "<style>\r\n" + "table, th, td {\r\n" + "  border: 1px solid black;\r\n" + "}\r\n"
+				+ "</style> " + "<table style=\"width:100%\">\r\n" + "  <tr>\r\n" + "<th>Location X</th>\r\n"
+				+ "    <th>Location Y</th>\r\n" + "    <th>Destination X</th>\r\n"
+				+ "    <th>Destination Y</th>\r\n" + "    <th>Time</th>\r\n" + "    <th>Driver</th> \r\n" + "  <th></th></tr>\r\n";
+		StringBuilder sb = new StringBuilder();
+
+		for (Ride r : rides) {
+			if (r.getRider().equals(LocalUser.getUser())) {
+				sb.append("<tr>");
+				sb.append("<th>" + r.getStart().getX() + "</th>");
+				sb.append("<th>" + r.getStart().getY() + "</th>");
+				sb.append("<th>" + r.getDest().getX() + "</th>");
+				sb.append("<th>" + r.getDest().getY() + "</th>");
+				sb.append("<th>" + r.getTime() + "</th>");
+				if (r.getDriver() == null) {
+					sb.append("<th> Unclaimed </th></tr>");
+				} else {
+
+					sb.append("<th>" + r.getDriver().getName() + "</th>");
+				}
+				sb.append("<th><a href=\"DeleteRide?"+r.getId()+"\">Delete This Ride</a></th></tr>");
+			}
+		}
+
+		return (out + sb.toString() + "</table>\r\n");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

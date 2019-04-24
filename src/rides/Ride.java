@@ -1,8 +1,7 @@
 package rides;
 
 
-import domain.login.*;
-import local.LocalUser;
+import domain.login.*; 
 
 public class Ride {
 	

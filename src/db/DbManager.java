@@ -2,6 +2,7 @@ package db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -157,6 +158,25 @@ public class DbManager implements MyDB {
 			e.printStackTrace();
 			return null;
 		}
+	}
+
+	public static void delete(Ride ride) {
+		Connection conn = getConnection();
+
+		try {
+			PreparedStatement ps = conn.prepareStatement("DELETE from ride where id = ?");
+			ps.setInt(1, ride.getId());
+			ps.executeUpdate();
+
+
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
+		
 	}
 
 }
