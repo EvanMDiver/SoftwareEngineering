@@ -15,5 +15,6 @@
 		out.print(RequestClaimController.getTable());
 	%>
 
+	<a href="myclaims.jsp">Back</a>
 </body>
 </html>

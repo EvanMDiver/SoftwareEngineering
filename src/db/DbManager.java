@@ -21,7 +21,6 @@ import rides.Ride;
  */
 public class DbManager implements MyDB {
 
-
 	private DbManager() {
 	};
 
@@ -54,7 +53,7 @@ public class DbManager implements MyDB {
 			String driverId = rs.getString("driverId");
 			Location start = new Location(startX, startY);
 			Location dest = new Location(endX, endY);
-			
+
 			Customer rider = getCustomer(customerId);
 			Driver driver = getDriver(driverId);
 
@@ -69,34 +68,34 @@ public class DbManager implements MyDB {
 		try {
 			Connection conn = getConnection();
 			Statement state = conn.createStatement();
-			ResultSet rs = state.executeQuery("select * from coursedatabase.customer where userId = '" + username+ "';");
-			
-			if(rs.first()){
+			ResultSet rs = state
+					.executeQuery("select * from coursedatabase.customer where userId = '" + username + "';");
+
+			if (rs.first()) {
 				return new Customer(rs.getString("userId"), rs.getString("password"), rs.getString("name"));
-			}
-			else return null;
-		} catch (SQLException e) { 
+			} else
+				return null;
+		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
-	
+
 	public static Driver getDriver(String username) {
 		try {
 			Connection conn = getConnection();
 			Statement state = conn.createStatement();
-			ResultSet rs = state.executeQuery("select * from coursedatabase.driver where userId = '" + username+ "';");
-			
-			if(rs.next()){
+			ResultSet rs = state.executeQuery("select * from coursedatabase.driver where userId = '" + username + "';");
+
+			if (rs.next()) {
 				return new Driver(rs.getString("userId"), rs.getString("password"), rs.getString("name"));
-			}
-			else return null;
-		} catch (SQLException e) { 
+			} else
+				return null;
+		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
-	
 
 	public static boolean add(Ride r) {
 		try {
@@ -113,29 +112,33 @@ public class DbManager implements MyDB {
 		}
 
 	}
-	
+
 	public static void saveRide(Ride r) {
 		try {
 			Connection conn = getConnection();
 			Statement state = conn.createStatement();
-			
-			state.executeUpdate("update coursedatabase.ride set driverId = \""+ r.getDriver().getUsername() + "\" where id =" + r.getId());
-						
-			
+			Driver d = r.getDriver();
+			if (d == null) {
+				state.executeUpdate("update coursedatabase.ride set driverId = NULL where id =" + r.getId());
+			} else {
+				state.executeUpdate("update coursedatabase.ride set driverId = \"" + r.getDriver().getUsername()
+						+ "\" where id =" + r.getId());
+			}
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	public static Ride getRide(int rideId) {
 		try {
 			Connection conn = getConnection();
 			Statement state = conn.createStatement();
-			ResultSet rs = state.executeQuery("select * from coursedatabase.ride where id = '" + rideId+ "';");
-			
-			if(rs.next()){
+			ResultSet rs = state.executeQuery("select * from coursedatabase.ride where id = '" + rideId + "';");
+
+			if (rs.next()) {
 				int id = rs.getInt("id");
 				String customerId = rs.getString("customerId");
 				int startX = rs.getInt("startX");
@@ -146,15 +149,15 @@ public class DbManager implements MyDB {
 				String driverId = rs.getString("driverId");
 				Location start = new Location(startX, startY);
 				Location dest = new Location(endX, endY);
-				
+
 				Customer rider = getCustomer(customerId);
 				Driver driver = getDriver(driverId);
 
 				Ride ride = new Ride(id, rider, start, dest, time, driver);
 				return ride;
-			}
-			else return null;
-		} catch (SQLException e) { 
+			} else
+				return null;
+		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
 		}
@@ -168,15 +171,11 @@ public class DbManager implements MyDB {
 			ps.setInt(1, ride.getId());
 			ps.executeUpdate();
 
-
-
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-
-		
 	}
 
 }

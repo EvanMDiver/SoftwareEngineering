@@ -44,7 +44,7 @@ public class LoginControllerD extends HttpServlet {
 				lu.setUsername(username);
 				lu.setUser(c);
 				request.setAttribute("message", "Hello " + c.getName());
-				request.getRequestDispatcher("dummy.jsp").forward(request, response);
+				request.getRequestDispatcher("myclaims.jsp").forward(request, response);
 			} else if (c != null) {
 				request.setAttribute("message", "Your password is incorrect.");
 				request.getRequestDispatcher("login.jsp").forward(request, response);

@@ -34,6 +34,9 @@ public class RequestClaimController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		if(request.getParameter("rideId") != null) {
+			doPost(request, response);
+		}
 		getServletContext().getRequestDispatcher("/unclaimedrides.jsp").forward(request, response);
 	}
 
@@ -53,11 +56,8 @@ public class RequestClaimController extends HttpServlet {
 			r.setDriver(new Driver("testDriver", "test", "Test Driver"));
 			DbManager.saveRide(r);
 		}
-		
-		doGet(request, response);
-		
-		
-		
+				
+			
 		
 	}
 	
@@ -85,7 +85,7 @@ public class RequestClaimController extends HttpServlet {
 				sb.append("<th>" + r.getDest().getX() + "</th>");
 				sb.append("<th>" + r.getDest().getY() + "</th>");
 				sb.append("<th>" + r.getTime() + "</th>");
-				sb.append("<th> <form method = \"post\"><button name=\"rideId\" type=\"submit\" value="+r.getId()+">Claim </button> <form>  </th></tr>");
+				sb.append("<th>  <a href=\"UnclaimedRides?rideId="+r.getId()+"\">Claim</a> </th></tr>");
 
 			}
 		}
